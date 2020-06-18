@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Accounts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+
+</head>
+<body>
+	<div class="columns">
+		<div class="column">
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Find All Accounts</h1>
+					<form id="findAll">
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-link">Get All
+									Accounts</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Find Account by ID</h1>
+					<form id="findById">
+						<div class="field">
+							<label class="label">Account ID: </label>
+							<div class="control">
+								<input class="input" type="text" name="id">
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-link">Search
+									Account ID</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Find Account by Status</h1>
+					<form id="findByStatus">
+						<div class="field">
+							<label class="label">Account Status: </label>
+							<div class="control">
+								<div class="select">
+									<select name="status">
+										<option value="OPEN">Open</option>
+										<option value="PENDING">Pending</option>
+										<option value="CLOSED">Closed</option>
+										<option value="DENIED">Denied</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-link">Search
+									Account Status</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Find Account by Owner</h1>
+					<form id="findByOwner">
+						<div class="field">
+							<label class="label">Owner User ID: </label>
+							<div class="control">
+								<input class="input" type="text" name="userid">
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-link">Search
+									Owner</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Submit New Account</h1>
+					<form id="submitAccount">
+						<div class="field">
+							<label class="label">Owner User ID: </label>
+							<div class="control">
+								<input class="input" type="text" name="userid">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Starting Balance </label>
+							<div class="control">
+								<input class="input" type="text" name="balance">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Account Type: </label>
+							<div class="control">
+								<div class="select">
+									<select name="type">
+										<option value="CHECKING">Checking</option>
+										<option value="SAVINGS">Savings</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Account Status: </label>
+							<div class="control">
+								<div class="select">
+									<select name="status">
+										<option value="OPEN">Open</option>
+										<option value="PENDING">Pending</option>
+										<option value="CLOSED">Closed</option>
+										<option value="DENIED">Denied</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-link">Create
+									Account</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Update Account</h1>
+					<form id="updateAccount">
+						<div class="field">
+							<label class="label">Account ID: </label>
+							<div class="control">
+								<input class="input" type="text" name="accountid">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Balance </label>
+							<div class="control">
+								<input class="input" type="text" name="balance">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Account Type: </label>
+							<div class="control">
+								<div class="select">
+									<select name="type">
+										<option value="CHECKING">Checking</option>
+										<option value="SAVINGS">Savings</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Account Status: </label>
+							<div class="control">
+								<div class="select">
+									<select name="status">
+										<option value="OPEN">Open</option>
+										<option value="PENDING">Pending</option>
+										<option value="CLOSED">Closed</option>
+										<option value="DENIED">Denied</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-link">Update
+									Account</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Withdraw</h1>
+					<form id="withdraw">
+						<div class="field">
+							<label class="label">Account ID: </label>
+							<div class="control">
+								<input class="input" type="text" name="accountid">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Withdraw Amount: </label>
+							<div class="control">
+								<input class="input" type="text" name="amount">
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-link">Withdraw</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Deposit</h1>
+					<form id="deposit">
+						<div class="field">
+							<label class="label">Account ID: </label>
+							<div class="control">
+								<input class="input" type="text" name="accountid">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Deposit Amount: </label>
+							<div class="control">
+								<input class="input" type="text" name="amount">
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-link">Deposit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Transfer</h1>
+					<form id="transfer">
+						<div class="field">
+							<label class="label">Sender Account ID: </label>
+							<div class="control">
+								<input class="input" type="text" name="sourceid">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Recipient Account ID: </label>
+							<div class="control">
+								<input class="input" type="text" name="targetid">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Transfer Amount: </label>
+							<div class="control">
+								<input class="input" type="text" name="amount">
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-link">Transfer</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Delete Account</h1>
+					<form id="deleteAccount">
+						<div class="field">
+							<label class="label">Account ID: </label>
+							<div class="control">
+								<input class="input" type="text" name="accountid">
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-danger">Delete</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+			
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Accrue Interest</h1>
+					<form id="passTime">
+						<div class="field">
+							<label class="label">Number of Months: </label>
+							<div class="control">
+								<input class="input" type="text" name="numofmonths">
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-warning">Pass Time</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+		</div>
+		<div class="column">
+			<section class="section" style="position:fixed;">
+				<div id="results" class="container">
+					<div class="content">
+						<table class="table">
+							<thead></thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+		</div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+			integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+			crossorigin="anonymous"></script>
+		<script>
+			$('#findAll').submit(
+					function(event) {
+						event.preventDefault();
+						$('#results table tbody').empty(); 
+						$('#results table thead').html('<tr><th>AccountId</th><th>Type</th><th>Status</th><th>Balance</th></tr>');
+						$.get('accounts', function(data) {
+							data.forEach(function(d) {
+								$('#results table tbody').append(
+										'<tr><td>' + d.accountId + '</td>' + 
+										'<td>' + d.type + '</td>' + 
+										'<td>' + d.status + '</td>' +
+										'<td>$' + d.balance + '</td></tr>');
+							});
+						});
+					});
+
+			$('#findById').submit(
+					function(event) {
+						event.preventDefault();
+						$('#results table tbody').empty(); 
+						$('#results table thead').empty(); 
+
+						var accountId = $('input[type=text][name=id]').val();
+						$.get('accounts/' + accountId, function(data) {
+							if (data) {
+								$('#results table thead').html('<tr><th>AccountId</th><th>Type</th><th>Status</th><th>Balance</th></tr>');
+								$('#results table tbody').append(
+										'<tr><td>' + data.accountId + '</td>' + 
+										'<td>' + data.type + '</td>' + 
+										'<td>' + data.status + '</td>' +
+										'<td>$' + data.balance + '</td></tr>');
+							} else {
+								
+								$('#results table tbody').append(
+										'<tr><td>Could not find account: '
+												+ accountId + '</td></tr>');
+							}
+						});
+					});
+
+			$('#findByStatus').submit(
+					function(event) {
+						event.preventDefault();
+						$('#results table tbody').empty(); 
+						$('#results table thead').empty();
+
+						var status = $('select[name=status]').val();
+						$.get('accounts/status/' + status, function(data) {
+							if (data) {
+								$('#results table thead').html('<tr><th>AccountId</th><th>Type</th><th>Status</th><th>Balance</th></tr>');
+								data.forEach(function(d) {
+									$('#results table tbody').append(
+											'<tr><td>' + d.accountId + '</td>' + 
+											'<td>' + d.type + '</td>' + 
+											'<td>' + d.status + '</td>' +
+											'<td>$' + d.balance + '</td></tr>');
+								});
+							} else {
+								$('#results table tbody').append(
+										'<tr><td>Could not find accounts with status '
+												+ status + '</td></tr>');
+							}
+						});
+					});
+
+			$('#findByOwner').submit(
+					function(event) {
+						event.preventDefault();
+						$('#results table tbody').empty(); 
+						$('#results table thead').empty();
+
+						var ownerid = $('input[type=text][name=userid]').val();
+						$.get('accounts/owner/' + ownerid, function(data) {
+							if (data) {
+
+								$('#results table thead').html('<tr><th>AccountId</th><th>Type</th><th>Status</th><th>Balance</th></tr>');
+								data.forEach(function(d) {
+									$('#results table tbody').append(
+											'<tr><td>' + d.accountId + '</td>' + 
+											'<td>' + d.type + '</td>' + 
+											'<td>' + d.status + '</td>' +
+											'<td>$' + d.balance + '</td></tr>');
+								});
+							} else {
+								$('#results table tbody').append(
+										'<tr><td>Could not find accounts with owner id '
+												+ ownerid + '</td></tr>');
+							}
+						});
+					});
+
+			$('#submitAccount')
+					.submit(
+							function(event) {
+								event.preventDefault();
+								$('#results table tbody').empty(); 
+								$('#results table thead').empty();
+
+								var postData = $(this).serialize();
+								$
+										.post(
+												'accounts',
+												postData,
+												function(data, status) {
+													console
+															.log('Data: '
+																	+ data);
+													console.log('Status: '
+															+ status);
+													$('#results table tbody')
+															.append(
+																	'<tr><td>'
+																			+ data.message
+																			+ '</td></tr>');
+												}, 'json')
+										.fail(
+												function() {
+													console.log('Failed');
+													$('#results table tbody')
+															.append(
+																	'<tr><td>Could Not Create Account</td></tr>');
+												});
+							});
+
+			$('#updateAccount')
+					.submit(
+							function(event) {
+								event.preventDefault();
+								$('#results table tbody').empty(); 
+								$('#results table thead').empty();
+
+								var postData = $(this).serialize();
+								$
+										.post(
+												'accounts/update',
+												postData,
+												function(data, status) {
+													$('#results table tbody')
+															.append(
+																	'<tr><td>'
+																	+ data.message
+																	+ '</td></tr>');
+												}, 'json')
+										.fail(
+												function() {
+													console.log('Failed');
+													$('#results table tbody')
+															.append(
+																	'<tr><td>Could Not Update Account</td></tr>');
+												});
+							});
+
+			$('#withdraw').submit(function(event) {
+				event.preventDefault();
+				$('#results table tbody').empty(); 
+				$('#results table thead').empty();
+
+				var postData = $(this).serialize();
+				$.post('accounts/withdraw', postData, function(data, status) {
+					$('#results table tbody').append('<tr><td>' + data.message + '</tr></td>');
+				}, 'json').fail(function() {
+					console.log('Failed');
+					$('#results table tbody').append('<tr><td>Withdraw Failed.</tr></td>');
+				});
+			});
+
+			$('#deposit').submit(function(event) {
+				event.preventDefault();
+				$('#results table tbody').empty(); 
+				$('#results table thead').empty();
+
+				var postData = $(this).serialize();
+				$.post('accounts/deposit', postData, function(data, status) {
+					$('#results table tbody').append('<tr><td>' + data.message + '</tr></td>');
+				}, 'json').fail(function(f) {
+					console.log('Failed: ' + f);
+					$('#results table tbody').append('<tr><td>Deposit Failed.</tr></td>');
+				});
+			});
+
+			$('#transfer').submit(function(event) {
+				event.preventDefault();
+				$('#results table tbody').empty(); 
+				$('#results table thead').empty();
+
+				var postData = $(this).serialize();
+				$.post('accounts/transfer', postData, function(data, status) {
+					$('#results table tbody').append('<tr><td>' + data.message + '</tr></td>');
+				}, 'json').fail(function(f) {
+					console.log('Failed: ' + f);
+					$('#results table tbody').append('<tr><td>Transfer Failed.</tr></td>');
+				});
+			});
+
+			$('#deleteAccount')
+					.submit(
+							function(event) {
+								event.preventDefault();
+								$('#results table tbody').empty(); 
+								$('#results table thead').empty();
+
+								var postData = $(this).serialize();
+								$
+										.post(
+												'accounts/delete',
+												postData,
+												function(data, status) {
+													$('#results table tbody')
+															.append(
+																	'<tr><td>'
+																			+ data.message
+																			+ '</tr></td>');
+												}, 'json')
+										.fail(
+												function() {
+													console.log('Failed');
+													$('#results table tbody')
+															.append(
+																	'<tr><td>Could Not Delete Account</tr></td>');
+												});
+							});
+			
+			$('#passTime').submit(function(event) {
+				event.preventDefault();
+				$('#results table tbody').empty(); 
+				$('#results table thead').empty();
+
+				var postData = $(this).serialize();
+				$.post('passTime', postData, function(data, status) {
+					$('#results table tbody').append('<tr><td>' + data.message + '</tr></td>');
+				}, 'json').fail(function(f) {
+					console.log('Failed: ' + f);
+					$('#results table tbody').append('<tr><td>Pass Time Failed.</tr></td>');
+				});
+			});
+		</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Users</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+</head>
+<body>
+	<div class="columns">
+		<div class="column">
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Find All Users</h1>
+					<form id="findAll">
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-link">Get All
+									Users</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Find User By ID</h1>
+					<form id="findById">
+						<div class="field">
+							<label>UserID</label>
+							<div class="control">
+								<input type="text" name="id">
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-link">Search
+									User ID</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Update User</h1>
+					<form id="updateUser">
+						<div class="field">
+							<label>UserID:</label>
+							<div class="control">
+								<input type="text" name="id">
+							</div>
+						</div>
+						<div class="field">
+							<label>First Name:</label>
+							<div class="control">
+								<input type="text" name="firstname">
+							</div>
+						</div>
+						<div class="field">
+							<label>Last Name:</label>
+							<div class="control">
+								<input type="text" name="lastname">
+							</div>
+						</div>
+						<div class="field">
+							<label>Email:</label>
+							<div class="control">
+								<input type="text" name="email">
+							</div>
+						</div>
+						<div class="field">
+							<label>Username:</label>
+							<div class="control">
+								<input type="text" name="username">
+							</div>
+						</div>
+						<div class="field">
+							<label>Password:</label>
+							<div class="control">
+								<input type="password" name="password">
+							</div>
+						</div>
+						<div class="field">
+							<label>Role:</label>
+							<div class="control">
+								<select name="role">
+									<option value=""></option>
+									<option value="STANDARD">Standard</option>
+									<option value="PREMIUM">Premium</option>
+									<option value="EMPLOYEE">Employee</option>
+									<option value="ADMIN">Admin</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-link">Update
+									User</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Delete User</h1>
+					<form id="deleteUser">
+						<div class="field">
+							<label class="label">User ID: </label>
+							<div class="control">
+								<input class="input" type="text" name="userid">
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button type="submit" class="button is-danger">Delete</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+		</div>
+
+		<div class="column">
+			<section class="section" style="position: fixed;">
+				<div id="results" class="container">
+					<div class="content">
+						<table class="table">
+							<thead></thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+		crossorigin="anonymous"></script>
+	<script>
+		$('#deleteUser').submit(function(event) {
+			event.preventDefault();
+			$('#results table tbody').empty();
+			$('#results table thead').empty();
+			var postData = $(this).serialize();
+			$.post('users/delete', postData, function(data, status) {
+				$('#results table tbody').append('<tr><td>' + data.message + '</td></tr>');
+			}, 'json').fail(function(f) {
+				var pf = JSON.parse(f.responseText);
+				$('#results table tbody').append('<tr><td>' + pf.message + '</td></tr>');
+			}, 'json');
+		});
+		
+		$('#updateUser').submit(function(event) {
+			event.preventDefault();
+			$('#results table tbody').empty();
+			$('#results table thead').empty();
+			var postData = $(this).serialize();
+			$.post('users/update', postData, function(data, status) {
+				$('#results table tbody').append('<tr><td>' + data.message + '</td></tr>');
+			}, 'json').fail(function(f) {
+				var pf = JSON.parse(f.responseText);
+				$('#results table tbody').append('<tr><td>' + pf.message + '</td></tr>');
+			}, 'json');
+		});
+		
+		$('#findAll').submit(
+				function(event) {
+					event.preventDefault();
+					$('#results table tbody').empty();
+					$('#results table thead').html('<tr><th>UserID</th><th>Username</th><th>Role</th><th>First Name</th><th>Last Name</th><th>E-Mail</th><th>Password</th></tr>');
+					$.get('users', function(data) {
+						data.forEach(function(d) {
+							$('#results table tbody').append(
+									'<tr><td>' + d.userId + '</td>' + 
+									'<td>' + d.userName	+ '</td>' +
+									'<td>' + d.role + '</td>' +
+									'<td>' + d.firstName	+ '</td>' +
+									'<td>' + d.lastName	+ '</td>' +
+									'<td>' + d.email	+ '</td>' +
+									'<td>' + d.password	+ '</td>' +
+									'</tr>');
+						});
+					});
+				});
+
+		$('#findById').submit(function(event) {
+			event.preventDefault();
+			$('#results table tbody').empty();
+			$('#results table thead').empty();
+			var userid = $('input[type=text][name=id]').val();
+
+			$.get('users/' + userid, function(data) {
+				var entries = Object.entries(data)
+				entries.forEach(function(entry) {
+					$('#results table tbody').append(
+							'<tr><th>' + entry[0] + '</th><td>'
+									+ entry[1] + '</td></tr>');
+				});
+
+			},'json').fail(function(f) {
+				$('#results table tbody').append('<tr><td>Unable to find that user.</td></tr>');
+			},'json');
+		});
+	</script>
+</body>
+</html>
